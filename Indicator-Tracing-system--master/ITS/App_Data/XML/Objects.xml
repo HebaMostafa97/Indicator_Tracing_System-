@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects>
+  <object name="User">
+    <functions>
+      <function name="Browse" />
+      <function name="Add" />
+      <function name="Edit" />
+      <function name="Delete" />
+      <function name="LinkGroup" />
+      <function name="Preview" />
+    </functions>
+  </object>
+  <object name="Group">
+    <functions>
+      <function name="Browse" />
+      <function name="Add" />
+      <function name="Edit" />
+      <function name="Delete" />
+      <function name="Permission" />
+      <function name="Preview" />
+    </functions>
+  </object>
+  <object name="Publisher">
+    <functions>
+      <function name="Browse" />
+      <function name="Add" />
+      <function name="Edit" />
+      <function name="Delete" />
+      <function name="Preview" />
+    </functions>
+  </object>
+
+  <object name="Indicator">
+    <functions>
+      <function name="Browse" />
+      <function name="Add" />
+      <function name="Edit" />
+      <function name="Delete" />
+      <function name="Preview" />
+    </functions>
+  </object>
+
+  <object name="IndicatorAttachment">
+    <functions>
+      <function name="Browse"/>
+      <function name="Preview" />
+    </functions>
+  </object>
+  
+</objects>

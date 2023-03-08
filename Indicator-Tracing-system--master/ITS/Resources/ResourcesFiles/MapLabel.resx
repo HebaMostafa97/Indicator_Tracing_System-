@@ -1,0 +1,688 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDenied" xml:space="preserve">
+    <value>Access Denied !!</value>
+    <comment>share</comment>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+    <comment>share</comment>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+    <comment>share</comment>
+  </data>
+  <data name="Agenda" xml:space="preserve">
+    <value>Agenda</value>
+    <comment>share</comment>
+  </data>
+  <data name="Arabic" xml:space="preserve">
+    <value>Arabic</value>
+    <comment>share</comment>
+  </data>
+  <data name="ArabicDescription" xml:space="preserve">
+    <value>Arabic Description</value>
+    <comment>share</comment>
+  </data>
+  <data name="ArabicName" xml:space="preserve">
+    <value>Arabic Name</value>
+    <comment>share</comment>
+  </data>
+  <data name="Attribute" xml:space="preserve">
+    <value>Attribute</value>
+    <comment>share</comment>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Browse</value>
+    <comment>share</comment>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>share</comment>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Add</value>
+    <comment>share</comment>
+  </data>
+  <data name="CreateDate" xml:space="preserve">
+    <value>Create Date</value>
+    <comment>share</comment>
+  </data>
+  <data name="CreateGroup" xml:space="preserve">
+    <value>Create Group</value>
+    <comment>share</comment>
+  </data>
+  <data name="CreateUser" xml:space="preserve">
+    <value>Create User</value>
+    <comment>share</comment>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+    <comment>share</comment>
+  </data>
+  <data name="DeleteConfirm" xml:space="preserve">
+    <value>Are you sure you want to delete</value>
+    <comment>share</comment>
+  </data>
+  <data name="DeletePhoto" xml:space="preserve">
+    <value>Delete Photo</value>
+    <comment>share</comment>
+  </data>
+  <data name="Deny" xml:space="preserve">
+    <value>Deny</value>
+    <comment>share</comment>
+  </data>
+  <data name="Description_A" xml:space="preserve">
+    <value>Description Arabic</value>
+    <comment>share</comment>
+  </data>
+  <data name="Description_E" xml:space="preserve">
+    <value>Description English</value>
+    <comment>share</comment>
+  </data>
+  <data name="direction" xml:space="preserve">
+    <value />
+    <comment>share</comment>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+    <comment>share</comment>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+    <comment>share</comment>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+    <comment>share</comment>
+  </data>
+  <data name="EnglishDescription" xml:space="preserve">
+    <value>English Description</value>
+    <comment>share</comment>
+  </data>
+  <data name="EnglishName" xml:space="preserve">
+    <value>English Name</value>
+    <comment>share</comment>
+  </data>
+  <data name="Exist" xml:space="preserve">
+    <value>This User Already Exist</value>
+    <comment>share</comment>
+  </data>
+  <data name="Focus" xml:space="preserve">
+    <value>Focus</value>
+    <comment>share</comment>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Forgot Your Password?</value>
+    <comment>share</comment>
+  </data>
+  <data name="Function" xml:space="preserve">
+    <value>Function</value>
+    <comment>share</comment>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group</value>
+    <comment>share</comment>
+  </data>
+  <data name="Hidden" xml:space="preserve">
+    <value>HiddenInEnglish</value>
+    <comment>share</comment>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>Home Page</value>
+    <comment>share</comment>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+    <comment>share</comment>
+  </data>
+  <data name="InActive" xml:space="preserve">
+    <value>In Active</value>
+    <comment>share</comment>
+  </data>
+  <data name="Inhrit" xml:space="preserve">
+    <value>Inhrit</value>
+    <comment>share</comment>
+  </data>
+  <data name="isDefault" xml:space="preserve">
+    <value>is Default</value>
+    <comment>share</comment>
+  </data>
+  <data name="JobTitle" xml:space="preserve">
+    <value>Job Title</value>
+    <comment>share</comment>
+  </data>
+  <data name="LinkGroup" xml:space="preserve">
+    <value>Link Group</value>
+    <comment>share</comment>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Login</value>
+    <comment>share</comment>
+  </data>
+  <data name="Lookups" xml:space="preserve">
+    <value>Lookups</value>
+    <comment>share</comment>
+  </data>
+  <data name="Media" xml:space="preserve">
+    <value>Media</value>
+    <comment>share</comment>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+    <comment>share</comment>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>News</value>
+    <comment>share</comment>
+  </data>
+  <data name="Notes" xml:space="preserve">
+    <value>Notes</value>
+    <comment>share</comment>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Owner</value>
+    <comment>share</comment>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>password</value>
+    <comment>share</comment>
+  </data>
+  <data name="Permission" xml:space="preserve">
+    <value>Permission</value>
+    <comment>share</comment>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Photo</value>
+    <comment>share</comment>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>Preview</value>
+    <comment>share</comment>
+  </data>
+  <data name="Restricted" xml:space="preserve">
+    <value>Restricted</value>
+    <comment>share</comment>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+    <comment>share</comment>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+    <comment>share</comment>
+  </data>
+  <data name="selcttObject" xml:space="preserve">
+    <value>Select Object</value>
+    <comment>share</comment>
+  </data>
+  <data name="SelectGroup" xml:space="preserve">
+    <value>Select Group</value>
+    <comment>share</comment>
+  </data>
+  <data name="SocialMedia" xml:space="preserve">
+    <value>Social Media</value>
+    <comment>share</comment>
+  </data>
+  <data name="SortIndex" xml:space="preserve">
+    <value>Sort Index</value>
+    <comment>share</comment>
+  </data>
+  <data name="Template" xml:space="preserve">
+    <value>Template</value>
+    <comment>share</comment>
+  </data>
+  <data name="TextAlign" xml:space="preserve">
+    <value>text-align:left</value>
+    <comment>share</comment>
+  </data>
+  <data name="textposition" xml:space="preserve">
+    <value>textpositionForEnglish</value>
+    <comment>share</comment>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>content_English</value>
+    <comment>share</comment>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+    <comment>share</comment>
+  </data>
+  <data name="Title_A" xml:space="preserve">
+    <value>Title Arabic</value>
+    <comment>share</comment>
+  </data>
+  <data name="Title_E" xml:space="preserve">
+    <value>Title English</value>
+    <comment>share</comment>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+    <comment>share</comment>
+  </data>
+  <data name="UserLink" xml:space="preserve">
+    <value>User Link</value>
+    <comment>share</comment>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Username</value>
+    <comment>share</comment>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+    <comment>share</comment>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>This Field Is Required</value>
+    <comment>share</comment>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Admin</value>
+    <comment>share</comment>
+  </data>
+  <data name="Assign" xml:space="preserve">
+    <value>Assign</value>
+    <comment>share</comment>
+  </data>
+  <data name="Allow" xml:space="preserve">
+    <value>Allow</value>
+  </data>
+  <data name="ContentActive" xml:space="preserve">
+    <value>activeEnglish</value>
+    <comment>Share</comment>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+    <comment>Share</comment>
+  </data>
+  <data name="SignOut" xml:space="preserve">
+    <value>Sign Out</value>
+    <comment>share</comment>
+  </data>
+  <data name="EmailExist" xml:space="preserve">
+    <value>This Email Already In Use</value>
+    <comment>Share</comment>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+    <comment>share</comment>
+  </data>
+  <data name="text" xml:space="preserve">
+    <value>textalign</value>
+    <comment>share</comment>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>Records</value>
+    <comment>share</comment>
+  </data>
+  <data name="IndicatorTracingSystem" xml:space="preserve">
+    <value>Indicator Tracing System</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Show</value>
+    <comment>share</comment>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="Security" xml:space="preserve">
+    <value>Security</value>
+    <comment>share</comment>
+  </data>
+  <data name="Publisher" xml:space="preserve">
+    <value>Publisher</value>
+    <comment>share</comment>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+    <comment>share</comment>
+  </data>
+  <data name="CreatePublisher" xml:space="preserve">
+    <value>Create Publisher</value>
+    <comment>share</comment>
+  </data>
+  <data name="Indicator" xml:space="preserve">
+    <value>Indicator</value>
+    <comment>share</comment>
+  </data>
+  <data name="CreateIndicator" xml:space="preserve">
+    <value>Create Indicator</value>
+    <comment>share</comment>
+  </data>
+  <data name="EndMonth" xml:space="preserve">
+    <value>End Month</value>
+    <comment>share</comment>
+  </data>
+  <data name="IndexUrl" xml:space="preserve">
+    <value>Index Url</value>
+    <comment>share</comment>
+  </data>
+  <data name="Notes_A" xml:space="preserve">
+    <value>Arabic Notes</value>
+    <comment>share</comment>
+  </data>
+  <data name="Notes_E" xml:space="preserve">
+    <value>English Notes</value>
+    <comment>share</comment>
+  </data>
+  <data name="Periodicity" xml:space="preserve">
+    <value>Periodicity</value>
+    <comment>share</comment>
+  </data>
+  <data name="ReportName_A" xml:space="preserve">
+    <value>Report Name Arabic</value>
+    <comment>share</comment>
+  </data>
+  <data name="ReportName_E" xml:space="preserve">
+    <value>Report Name English</value>
+    <comment>share</comment>
+  </data>
+  <data name="StartMonth" xml:space="preserve">
+    <value>Start Month</value>
+    <comment>share</comment>
+  </data>
+  <data name="WebsiteUrl" xml:space="preserve">
+    <value>website Url</value>
+    <comment>share</comment>
+  </data>
+  <data name="Abbreviation" xml:space="preserve">
+    <value>Abbreviation</value>
+    <comment>share</comment>
+  </data>
+  <data name="DeletedSuccessfully" xml:space="preserve">
+    <value>Deleted Successfully</value>
+    <comment>share</comment>
+  </data>
+  <data name="GroupError" xml:space="preserve">
+    <value>You Must Delete Users That Exist In This Goup</value>
+    <comment>share</comment>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+    <comment>Share</comment>
+  </data>
+  <data name="ReportName" xml:space="preserve">
+    <value>Report Name</value>
+    <comment>share</comment>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+    <comment>share</comment>
+  </data>
+  <data name="IndicatorAttachment" xml:space="preserve">
+    <value>IndicatorAttachment</value>
+    <comment>share</comment>
+  </data>
+  <data name="Attachment" xml:space="preserve">
+    <value>Attachment</value>
+    <comment>share</comment>
+  </data>
+  <data name="AttachmentTitle" xml:space="preserve">
+    <value>Attachment Title</value>
+    <comment>share</comment>
+  </data>
+  <data name="AttachmentUrl" xml:space="preserve">
+    <value>AttachmentUrl</value>
+    <comment>share</comment>
+  </data>
+  <data name="Keyword" xml:space="preserve">
+    <value>Keyword</value>
+    <comment>share</comment>
+  </data>
+  <data name="ReleaseDate" xml:space="preserve">
+    <value>Release Date</value>
+    <comment>share</comment>
+  </data>
+  <data name="UploadDate" xml:space="preserve">
+    <value>Upload Date</value>
+    <comment>share</comment>
+  </data>
+  <data name="EmailNotValid" xml:space="preserve">
+    <value>Email Is Not Valid</value>
+    <comment>Share</comment>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+    <comment>share</comment>
+  </data>
+  <data name="SaveAdd" xml:space="preserve">
+    <value>Save And Add</value>
+    <comment>share</comment>
+  </data>
+  <data name="SaveEdit" xml:space="preserve">
+    <value>Save And Edit</value>
+    <comment>share</comment>
+  </data>
+  <data name="HomePageNotValid" xml:space="preserve">
+    <value>Url Not Valid</value>
+  </data>
+  <data name="PasswordValidation" xml:space="preserve">
+    <value>Password must contain at least 8 characters including UPPER/lowercase and numbers</value>
+    <comment>share</comment>
+  </data>
+  <data name="LookUpName" xml:space="preserve">
+    <value>Name_E</value>
+    <comment>Share</comment>
+  </data>
+  <data name="LastLogonDate" xml:space="preserve">
+    <value>Last Logon Date</value>
+    <comment>share</comment>
+  </data>
+  <data name="LastLogoutDate" xml:space="preserve">
+    <value>Last Logout Date</value>
+    <comment>share</comment>
+  </data>
+  <data name="IndicatorID" xml:space="preserve">
+    <value>Indicator ID</value>
+  </data>
+  <data name="IndicatorName" xml:space="preserve">
+    <value>Indicator Name</value>
+  </data>
+  <data name="GroupName" xml:space="preserve">
+    <value>Group Name</value>
+    <comment>share</comment>
+  </data>
+  <data name="Groupof" xml:space="preserve">
+    <value>Group Of</value>
+    <comment>share</comment>
+  </data>
+  <data name="UsersOf" xml:space="preserve">
+    <value>Users Of</value>
+    <comment>share</comment>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+    <comment>share</comment>
+  </data>
+  <data name="PreviewTitle" xml:space="preserve">
+    <value>Information Of</value>
+    <comment>share</comment>
+  </data>
+  <data name="BlockedAccount" xml:space="preserve">
+    <value>Blocked Account</value>
+    <comment>share</comment>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>Invalid Password</value>
+    <comment>share</comment>
+  </data>
+  <data name="Invalidusername" xml:space="preserve">
+    <value>Invalid Username</value>
+    <comment>shaer</comment>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+    <comment>share</comment>
+  </data>
+  <data name="DownloadFailed" xml:space="preserve">
+    <value>File Downloading failed</value>
+  </data>
+  <data name="DownloadSuccessfully" xml:space="preserve">
+    <value>File Downloaded Successfully</value>
+  </data>
+  <data name="ThisFieldisRequired" xml:space="preserve">
+    <value>This Field is Required</value>
+    <comment>share</comment>
+  </data>
+  <data name="DownloadXml" xml:space="preserve">
+    <value>Download XML</value>
+  </data>
+  <data name="UploadXml" xml:space="preserve">
+    <value>Upload XML</value>
+  </data>
+  <data name="ThisFieldisNotValid" xml:space="preserve">
+    <value>ThisFieldisNotValid</value>
+    <comment>share</comment>
+  </data>
+  <data name="UserError" xml:space="preserve">
+    <value>You Can't Delete This User</value>
+    <comment>share</comment>
+  </data>
+  <data name="IndicatorDate" xml:space="preserve">
+    <value>Indicator Date</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+    <comment>share</comment>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+    <comment>share</comment>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End IndicatorDate</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start Indicator Date</value>
+  </data>
+  <data name="FileError" xml:space="preserve">
+    <value>There Is Error In File Please Review File Again</value>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>Groups</value>
+    <comment>Share</comment>
+  </data>
+  <data name="Indicators" xml:space="preserve">
+    <value>Indicators</value>
+  </data>
+  <data name="Publishers" xml:space="preserve">
+    <value>Publishers</value>
+  </data>
+</root>

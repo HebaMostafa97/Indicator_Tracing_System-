@@ -1,0 +1,87 @@
+﻿@model IEnumerable<ITS.Models.Group>
+@using ITS.Models
+@using ISDCore
+
+@{
+  ViewBag.Title = "Link Groups";
+  Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+@{
+  var user = ConvertHelper.Convert<User>(Session["UserToGroups"], null);
+  <h2>@ITS.Resources.ResourcesFiles.MapLabel.Assign @ITS.Resources.ResourcesFiles.MapLabel.Group: @user.Name</h2>
+}
+
+<div>
+  @using (Html.BeginForm())
+  {
+    <div class="row">
+      <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 @ITS.Resources.ResourcesFiles.MapCssClass.Oriantation">
+        <table class="table table-hover" id="DataTable">
+          <tr>
+          <thead>
+            <tr>
+              <th>
+                @if (Model.Count() > 0)
+                {
+                  <input type="checkbox" id="select-all" class="custom-checkbox @ITS.Resources.ResourcesFiles.MapCssClass.Oriantation" onclick="allitem()" />
+                }
+                else
+                {
+                  <input type="checkbox" id="select-all" class="custom-checkbox @ITS.Resources.ResourcesFiles.MapCssClass.Oriantation" disabled="disabled" onclick="allitem()" />
+                }
+
+              </th>
+              <th>
+                <label class="@ITS.Resources.ResourcesFiles.MapCssClass.Oriantation">@ITS.Resources.ResourcesFiles.MapLabel.Name</label>
+              </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+              <tr>
+                <td>
+                  @if (user.Groups.Where(g => g.ID == item.ID).Any())
+                  {
+                    <input type="checkbox" checked="checked" name="Items" value="@item.ID" class="custom-checkbox allcheckbox">
+                  }
+                  else
+                  {
+                    <input type="checkbox" name="Items" value="@item.ID" class="custom-checkbox allcheckbox">
+                  }
+
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.Name)
+                </td>
+              </tr>
+            }
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 @ITS.Resources.ResourcesFiles.MapCssClass.OriantationInverse" style="margin-right:50px; margin-left:10px;">
+        <input type="submit" value=@ITS.Resources.ResourcesFiles.MapLabel.Save class="btn btn-success" />
+        <a href="@Url.Action("Browse")" class="btn btn-danger">@ITS.Resources.ResourcesFiles.MapLabel.Cancel</a>
+      </div>
+     
+    </div>
+
+  }
+
+</div>
+
+@section scripts
+{
+  <script type="text/javascript">
+        function allitem() {
+            if ($("#select-all").is(":checked")) {
+                $(".allcheckbox").prop("checked", true);
+            }
+            else {
+                $(".allcheckbox").prop("checked", false);
+            }
+        }
+  </script>
+}

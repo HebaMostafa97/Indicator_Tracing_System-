@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<httpcollector id="akhbar_masr">
+  <linkExtractors>
+
+    <extractor class="com.norconex.collector.http.url.impl.GenericLinkExtractor">
+    </extractor>
+    <!-- Settings may vary from site to another -->
+
+  </linkExtractors>
+
+  <referenceFilters>
+
+    <filter class="$filterExtension" onMatch="exclude" >
+      jpg,jpeg,gif,png,ico,css,js,svg
+    </filter>
+
+
+  </referenceFilters>
+
+  <documentFilters>
+    <filter class="$filterRegexRef"   onMatch="include" >  .*/corruption_perceptions_index.* </filter>
+    <!-- FROM_DB (1~m) -->
+    <filter class="$filterRegexRef"   onMatch="include" >  .*/cpi20[0-9][0-9] </filter>
+    <filter class="$filterRegexRef"   onMatch="include" >  .*/cpi20.*/results </filter>
+    <filter class="$filterRegexRef"   onMatch="include" >  .*/files/content/.* </filter>
+    <filter class="$filterRegexRef"   onMatch="include" >  .*/files.transparency.org/.* </filter>
+  </documentFilters>
+
+
+  <!-- Document importing -->
+  <importer>
+
+    <preParseHandlers>
+      <transformer class="com.norconex.importer.handler.transformer.impl.StripBetweenTransformer" inclusive="true" caseSensitive="false" sourceCharset="charset=utf-8">
+        <!-- Settings, FROM_DB (1~m)-->
+        <stripBetween>
+          <start>
+            <![CDATA[<body style="cursor:default">
+  ]]>
+          </start>
+          <end>
+            <![CDATA[<div class="article">
+  ]]>
+          </end>
+        </stripBetween>
+
+        <stripBetween>
+          <start>
+            <![CDATA[<div class="min_related">
+
+  ]]>
+          </start>
+          <end>
+            <![CDATA[</div>
+
+  ]]>
+          </end>
+        </stripBetween>
+
+        <stripBetween>
+          <start>
+            <![CDATA[<div class="tags-u">
+
+  ]]>
+          </start>
+          <end>
+            <![CDATA[</body>
+  ]]>
+          </end>
+        </stripBetween>
+
+
+        <restrictTo field="document.contentType">text/html</restrictTo>
+
+      </transformer>
+    </preParseHandlers>
+
+    <postParseHandlers>
+      <!-- If your target repository does not support arbitrary fields,
+                 make sure you only keep the fields you need. -->
+      <tagger class="com.norconex.importer.handler.tagger.impl.KeepOnlyTagger">
+        <fields>title,keywords,author,description,document.reference,Date</fields>
+        <!-- Settings by Dr. Ghada -->
+      </tagger>
+      <tagger class="com.norconex.importer.handler.tagger.impl.ConstantTagger">
+        <constant name="IndicatorID">FROM_DB</constant>
+        <!-- FROM_DB-->
+      </tagger>
+
+      <!-- Settings vary from site to another, fromField, ToField, fromFormat, toFormat-->
+      <tagger class="com.norconex.importer.handler.tagger.impl.DateFormatTagger" fromField="Date" toField="last_modified"  fromFormat="EEE, dd MMM yyyy HH:mm:ss 'GMT'" toFormat="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" />
+
+
+
+
+      <transformer class="com.norconex.importer.handler.transformer.impl.ReduceConsecutivesTransformer" >
+
+
+
+        <reduce>\s</reduce>
+        <reduce>\n</reduce>
+        <reduce>\t</reduce>
+        <reduce>\s\n</reduce>
+        <reduce>\r\n</reduce>
+        <reduce>\t\n</reduce>
+        <reduce>\n\t</reduce>
+
+      </transformer>
+    </postParseHandlers>
+  </importer>
+
+  <!-- SETTINGS: committer section represent DB settings, name, IP, ... -->
+  <!-- Decide what to do with your files by specifying a Committer. -->
+  <committer class="com.norconex.committer.solr.SolrCommitter">
+    <solrURL>http://163.121.20.21:8983/solr/akhbar_masr </solrURL>
+
+    <commitDisabled>false</commitDisabled>
+    <sourceReferenceField keep="false">document.reference</sourceReferenceField>
+    <targetReferenceField>url</targetReferenceField>
+
+
+    <targetContentField>_text_</targetContentField>
+    <queueDir>./committer-queue</queueDir>
+
+    <maxRetries>1</maxRetries>
+    <maxRetryWait>0</maxRetryWait>
+  </committer>
+
+</httpcollector>

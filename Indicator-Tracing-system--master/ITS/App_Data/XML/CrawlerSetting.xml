@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<!-- 
+   Copyright 2010-2017 Norconex Inc.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<!-- This configuration shows the minimum required and basic recommendations
+     to run a crawler.  
+     -->
+<!--
+#set($core      = "com.norconex.collector.core")
+#set($http      = "com.norconex.collector.http")
+#set($filterExtension   = "${core}.filter.impl.ExtensionReferenceFilter")
+#set($filterRegexRef    = "${core}.filter.impl.RegexReferenceFilter")
+#set($filterRegexMeta   = "${core}.filter.impl.RegexMetadataFilter")
+#set($urlFilter = "com.norconex.collector.http.filter.impl.RegexURLFilter")
+-->
+
+
+<httpcollector id="akhbar_masr">
+  <!-- Indicator ID or abbreviation (FROM_DB) -->
+
+  <!-- Decide where to store generated files. -->
+  <progressDir>./examples-output/minimum/progress/akhbar_masr</progressDir>
+  <!-- Same as previous httpcollector id (FROM_DB)-->
+  <logsDir>./examples-output/minimum/logs/akhbar_masr</logsDir>
+  <!-- Same as previous httpcollector id (FROM_DB)-->
+
+  <crawlers>
+    <crawler id="NorconexCollectorMasr1">
+      <!-- Same as previous httpcollector id (FROM_DB) but add AutoNumber for multiple threads -->
+
+      <!-- Requires at least one start URL (or urlsFile). 
+           Optionally limit crawling to same protocol/domain/port as 
+           start URLs. -->
+      <startURLs stayOnDomain="false" stayOnPort="false" stayOnProtocol="false">
+
+
+
+
+        <!-- Almasryalyoum Akhbar Masr -->
+        <url>https://www.almasryalyoum.com/rss/rssfeeds?sectionId=3 </url>
+        <!-- FROM_DB-->
+
+
+
+      </startURLs>
+
+      <!-- === Recommendations: ============================================ -->
+
+      <!-- Specify a crawler default directory where to generate files. -->
+      <workDir>./examples-output/minimum/akhbar_masr</workDir>
+      <!-- Same as previous httpcollector id (FROM_DB)-->
+
+      <!-- Put a maximum depth to avoid infinite crawling (e.g. calendars). -->
+      <maxDepth>2</maxDepth>
+      <keepDownloads>false</keepDownloads>
+      <orphansStrategy>IGNORE</orphansStrategy>
+
+      <!-- We know we don't want to crawl the entire site, so ignore sitemap. -->
+      <sitemapResolverFactory ignore="true" />
+
+
+      <documentChecksummer class="com.norconex.collector.core.checksum.impl.MD5DocumentChecksummer" disabled="false" combineFieldsAndContent="true" keep="false">
+        <sourceFields> title </sourceFields>
+      </documentChecksummer>
+
+
+      <!-- Be as nice as you can to sites you crawl. -->
+      <delay default="2000" />
+
+      <referenceFilters>
+        <filter class="$filterExtension" onMatch="exclude" >
+          jpg,gif,png,ico,css,js
+        </filter>
+      </referenceFilters>
+
+      <httpURLFilters>
+
+
+
+      </httpURLFilters>
+
+
+    </crawler>
+
+
+
+  </crawlers>
+
+</httpcollector>

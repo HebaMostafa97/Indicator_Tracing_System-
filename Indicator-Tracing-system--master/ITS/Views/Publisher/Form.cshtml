@@ -1,0 +1,159 @@
+﻿@model ITS.Models.Publisher
+@using ISDCore
+@{
+  if (Model.ID <= 0)
+  {
+    ViewBag.title = "Add";
+  }
+  else
+  {
+    ViewBag.title = "Edit";
+  }
+  Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@if (Model.ID <= 0)
+{
+  <h2>@ITS.Resources.ResourcesFiles.MapLabel.Create  @ITS.Resources.ResourcesFiles.MapLabel.Publisher</h2>
+}
+else
+{
+  <h2>@ITS.Resources.ResourcesFiles.MapLabel.Edit  @ITS.Resources.ResourcesFiles.MapLabel.Publisher @ISDCore.Language.MapValue(Model.Name_E, Model.Name_A)</h2>
+}
+
+@using (Html.BeginForm("Form", "Publisher"))
+{
+  <div>
+    @Html.HiddenFor(model => model.ID)
+    <br />
+    <div class="row">
+      <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-3">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.ArabicName<span class="required" style="color:red;">*</span></label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-9">
+          @Html.EditorFor(model => model.Name_A, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.Name_A, "", new { @class = "text-danger" })
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-3">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.EnglishName<span class="required" style="color:red;">*</span></label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-9">
+          @Html.EditorFor(model => model.Name_E, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.Name_E, "", new { @class = "text-danger" })
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-3">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.Country<span class="required" style="color:red;">*</span></label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-9">
+          @Html.DropDownList("CountryID", null, htmlAttributes: new { @class = "form-control" })
+          @Html.ValidationMessageFor(model => model.CountryID, "", new { @class = "text-danger" })
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-3">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.HomePage</label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-9">
+          @Html.EditorFor(model => model.HomePage, new { htmlAttributes = new { @class = "form-control EnglishDirection", placeholder = "www.Example.com" } })
+          @Html.ValidationMessageFor(model => model.HomePage, "", new { @class = "text-danger" })
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-3">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.Description_A</label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-9">
+          @Html.TextAreaFor(model => model.Description_A, new { @class = "form-control", @cols = 3, @rows = 3 })
+          @Html.ValidationMessageFor(model => model.Description_A, "", new { @class = "text-danger" })
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-3">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.Description_E</label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-9">
+          @Html.TextAreaFor(model => model.Description_E, new { @class = "form-control", @cols = 3, @rows = 3 })
+          @Html.ValidationMessageFor(model => model.Description_E, "", new { @class = "text-danger" })
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-4 col-sm-4 col-md-3 col-lg-3">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.SortIndex</label>
+        </div>
+        <div class="col-xsm-3 col-sm-3 col-md-4 col-lg-3">
+          @Html.EditorFor(model => model.SortIndex, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.SortIndex, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-xsm-1 col-sm-1 col-md-1 col-lg-2">
+          @if (Model != null && Model.Focus == 1)
+          {
+            <input type="checkbox" name="focus" checked="checked" />
+          }
+          else
+          {
+
+            <input type="checkbox" name="focus" />
+          }
+          <span style="font-weight:bold">@ITS.Resources.ResourcesFiles.MapLabel.Focus</span>
+        </div>
+        <div class="col-xsm-1 col-sm-1 col-md-1 col-lg-2">
+
+          @if (Model != null && Model.Active == 1)
+          {
+            <input type="checkbox" name="active" checked="checked" />
+          }
+          else
+          {
+
+            <input type="checkbox" name="active" />
+          }
+          <span style="font-weight:bold">@ITS.Resources.ResourcesFiles.MapLabel.Active</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-xsm-12 col-sm-12 col-md-10 col-lg-6 @ITS.Resources.ResourcesFiles.MapCssClass.OriantationInverse">
+      <a href="@Url.Action("Browse","Publisher" , new { times = 1})" class="btn btn-danger">@ITS.Resources.ResourcesFiles.MapLabel.Cancel</a>
+      @if (Model.ID <= 0)
+      {
+        <a href="@Url.Action("Add","Publisher")" class="btn btn-warning">@ITS.Resources.ResourcesFiles.MapLabel.Reset</a>
+      }
+      else
+      {
+        <a href="@Url.Action("ResetEdit","Publisher",new { ID=Model.ID})" class="btn btn-warning">@ITS.Resources.ResourcesFiles.MapLabel.Reset</a>
+      }
+      @if (Model.ID <= 0)
+      {
+        <input type="submit" value="@ITS.Resources.ResourcesFiles.MapLabel.SaveAdd" name="Form" class="btn btn-success" />
+      }
+      else
+      {
+        <input type="submit" value="@ITS.Resources.ResourcesFiles.MapLabel.SaveEdit" name="Form" class="btn btn-success" />
+      }
+      <input type="submit" value="@ITS.Resources.ResourcesFiles.MapLabel.Save" name="Form" class="btn btn-success" />
+
+
+    </div>
+   
+  </div>
+}

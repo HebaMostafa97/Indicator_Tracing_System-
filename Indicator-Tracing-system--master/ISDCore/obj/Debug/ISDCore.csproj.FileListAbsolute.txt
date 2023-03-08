@@ -1,0 +1,27 @@
+D:\Indicator Tracing System\ITS Team\IndicatorTracingSystem\ISDCore\bin\Debug\ISDCore.dll.config
+D:\Indicator Tracing System\ITS Team\IndicatorTracingSystem\ISDCore\bin\Debug\ISDCore.dll
+D:\Indicator Tracing System\ITS Team\IndicatorTracingSystem\ISDCore\bin\Debug\ISDCore.pdb
+D:\Indicator Tracing System\ITS Team\IndicatorTracingSystem\ISDCore\bin\Debug\EntityFramework.dll
+D:\Indicator Tracing System\ITS Team\IndicatorTracingSystem\ISDCore\bin\Debug\EntityFramework.SqlServer.dll
+D:\Indicator Tracing System\ITS Team\IndicatorTracingSystem\ISDCore\bin\Debug\System.Web.Mvc.dll
+D:\Indicator Tracing System\ITS Team\IndicatorTracingSystem\ISDCore\bin\Debug\EntityFramework.xml
+D:\Indicator Tracing System\ITS Team\IndicatorTracingSystem\ISDCore\bin\Debug\EntityFramework.SqlServer.xml
+D:\Indicator Tracing System\ITS Team\IndicatorTracingSystem\ISDCore\bin\Debug\System.Web.Mvc.xml
+D:\Indicator Tracing System\ITS Team\IndicatorTracingSystem\ISDCore\obj\Debug\ISDCore.csprojAssemblyReference.cache
+D:\Indicator Tracing System\ITS Team\IndicatorTracingSystem\ISDCore\obj\Debug\ISDCore.csproj.CoreCompileInputs.cache
+D:\Indicator Tracing System\ITS Team\IndicatorTracingSystem\ISDCore\obj\Debug\ISDCore.csproj.CopyComplete
+D:\Indicator Tracing System\ITS Team\IndicatorTracingSystem\ISDCore\obj\Debug\ISDCore.dll
+D:\Indicator Tracing System\ITS Team\IndicatorTracingSystem\ISDCore\obj\Debug\ISDCore.pdb
+C:\Users\Heba\Desktop\MyProjects\IndicatorTracingSystem\ISDCore\bin\Debug\ISDCore.dll.config
+C:\Users\Heba\Desktop\MyProjects\IndicatorTracingSystem\ISDCore\bin\Debug\ISDCore.dll
+C:\Users\Heba\Desktop\MyProjects\IndicatorTracingSystem\ISDCore\bin\Debug\ISDCore.pdb
+C:\Users\Heba\Desktop\MyProjects\IndicatorTracingSystem\ISDCore\bin\Debug\EntityFramework.dll
+C:\Users\Heba\Desktop\MyProjects\IndicatorTracingSystem\ISDCore\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Heba\Desktop\MyProjects\IndicatorTracingSystem\ISDCore\bin\Debug\EntityFramework.xml
+C:\Users\Heba\Desktop\MyProjects\IndicatorTracingSystem\ISDCore\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Heba\Desktop\MyProjects\IndicatorTracingSystem\ISDCore\bin\Debug\System.Web.Mvc.xml
+C:\Users\Heba\Desktop\MyProjects\IndicatorTracingSystem\ISDCore\obj\Debug\ISDCore.csprojAssemblyReference.cache
+C:\Users\Heba\Desktop\MyProjects\IndicatorTracingSystem\ISDCore\obj\Debug\ISDCore.csproj.CoreCompileInputs.cache
+C:\Users\Heba\Desktop\MyProjects\IndicatorTracingSystem\ISDCore\obj\Debug\ISDCore.csproj.CopyComplete
+C:\Users\Heba\Desktop\MyProjects\IndicatorTracingSystem\ISDCore\obj\Debug\ISDCore.dll
+C:\Users\Heba\Desktop\MyProjects\IndicatorTracingSystem\ISDCore\obj\Debug\ISDCore.pdb

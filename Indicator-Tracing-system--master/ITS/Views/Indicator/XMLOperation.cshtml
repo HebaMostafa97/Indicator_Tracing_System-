@@ -1,0 +1,47 @@
+﻿@model ITS.Models.Indicator
+@{
+  ViewBag.Title = "XMLOperation";
+  Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>XML</h2>
+<br />
+@using (Html.BeginForm("XMLOperation", "Indicator", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+  @Html.HiddenFor(item => item.ID)
+  <div class="row form-group">
+    <div class="col-md-6 col-lg-6 col-sm-12">
+      <div class="col-md-4 col-lg-2 col-sm-4">
+        <label>@ITS.Resources.ResourcesFiles.MapLabel.UploadXml</label>
+      </div>
+      <div class="col-md-4 col-lg-4 col-sm-6">
+        <input type="file" name="file" id="file" />
+      </div>
+      <div class="col-md-4 col-lg-4 col-sm-2">
+        <a href="@Url.Action("ShowFile","Indicator", new { id = Model.ID})" target="_blank">@ISDCore.Language.MapValue(Model.Name_E,Model.Name_A)</a>
+      </div>
+    </div>
+    
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-lg-6 col-sm-12">
+      <div class="col-md-3 col-lg-2 col-sm-12 form-group">
+        <input type="submit" value="@ITS.Resources.ResourcesFiles.MapLabel.Save" name="Form" class="btn btn-success" />
+      </div>
+      <div class="col-md-4 col-lg-2 col-sm-12 form-group">
+        <a style="cursor:pointer" class="btn btn-info" onclick="Downloaded(this)" data-id="@Model.ID" model="Indicator" msg1="@ITS.Resources.ResourcesFiles.MapLabel.DownloadSuccessfully" msg2="@ITS.Resources.ResourcesFiles.MapLabel.DownloadFailed">@ITS.Resources.ResourcesFiles.MapLabel.DownloadXml</a>
+      </div>
+      <div class="col-md-3 col-lg-2 col-sm-12">
+        <a href="@Url.Action("Browse","Indicator" , new { times = 1})" class="btn btn-danger">@ITS.Resources.ResourcesFiles.MapLabel.Cancel</a>
+      </div>
+    </div>
+ </div>
+ <div style="color:red">
+   @if(ViewBag.FileMsg !="OK")
+   {
+     @ViewBag.FileMsg
+   }
+ </div>
+
+
+}

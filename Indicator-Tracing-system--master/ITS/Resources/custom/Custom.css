@@ -1,0 +1,189 @@
+﻿.textpositionForArabic {
+  text-align: right;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+.ArabicDirection .row [class*="col-"] {
+  float: right;
+}
+
+.OriantationInverseEnglish {
+    direction:rtl !important;
+}
+.OriantationInverseArabic {
+    direction: ltr !important;
+}
+
+
+.LoginForm {
+  width: 500px;
+  background-color:rgb(34, 146, 211);
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 55px;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  position: relative;
+  left: 20%;
+  right: 20%;
+}
+
+.username, .password {
+  height: 50px;
+}
+
+.submit {
+  height: 50px;
+  font-size:larger;
+  width:100px;
+  background-color:white;
+  color: black;
+}
+
+ .submit:hover {
+    background-color:brown;
+    color:white;
+}
+
+
+.ArabicDirection {
+  direction: rtl;
+}
+
+.EnglishDirection {
+  direction: ltr;
+}
+
+.Container {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.HiddenInEnglish {
+  display: none;
+}
+
+/* Sidebar d Id css */
+#sidebar {
+  position: fixed;
+  z-index: 1000;
+  width: 200px;
+  height: 100vh;
+  background: #151719;
+  left: -200px;
+  right: -200px;
+  margin-top: 50px;
+  transition: all 500ms linear;
+  border-top: 1px solid gray;
+}
+
+#sidebar.activeEnglish {
+  left: 0px;
+}
+#sidebar.activeArabic {
+  right: 0px;
+}
+#sidebar ul li {
+  list-style: none;
+  padding: 15px 0px;
+  border-bottom: 1px rgba(100,100,100,.3);
+}
+
+#sidebar ul li a {
+    color: rgba(230,230,230,.9);
+    text-decoration: none;
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    /*background-color: Highlight;*/
+    color: #7386D5 !important;
+    background: #fff ;
+    width:100%;
+  }
+/* selected da lma click 3leh w el css elly h7sal nfas el css elly h7sal beta3 el hover */
+/* selected da class lw7do */
+
+.selected {
+  color: #7386D5 !important;
+  background: #fff;
+  width: 100%;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+
+.UserProfile {
+    padding: 3px;
+}
+.UserProfile img {
+  width: 50px;
+  height: 50px;
+  border: 2px solid gray;
+  border-radius: 30px;
+
+}
+.Content {
+  padding:4% 1% 0 1%;
+  transition: all 500ms linear;
+}
+
+.Content .toggle-btn span {
+  display: block;
+  width: 30px;
+  height: 5px;
+  background: #151719;
+  margin: 5px 0px;
+}
+/*3ashan content margin*/
+.Content.activeArabic {
+  margin-right: 200px;
+}
+
+.Content.activeEnglish {
+  margin-left: 200px;
+}
+
+/* da class text-align:center */
+.textCenter{
+    text-align:center;
+}
+
+.pager {
+  text-align: center;
+  position: relative;
+  z-index: 1000;
+}
+.paging {
+  margin: 20px;
+}
+.descripe{
+  margin-top:-80px;
+}
+.grid-footer{
+    text-align:center;
+}
+
+.pagination > .active > span, .pagination > .active > a:hover{
+  background-color:gray !important;
+  border-color:gray !important;
+  color:blue !important;
+}
+table.grid-table tr.grid-row-selected td{
+  background-color:lightblue !important;
+}
+
+td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+label{
+  display:inline;
+}

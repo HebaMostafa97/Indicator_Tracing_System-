@@ -1,0 +1,133 @@
+﻿@model IEnumerable<ITS.Models.Indicator>
+@using GridMvc.Html
+@using ISDCore
+@{
+  Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+
+}
+
+<h2 class="header">@ViewBag.Title</h2>
+
+<div class="row">
+  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+    <div class="filter col-md-11 col-lg-10 col-sm-12 col-xs-12 form-group" style="border:2px solid #EDEDED; padding-top:1%;">
+      @using (Html.BeginForm("Browse", "Indicator", FormMethod.Post))
+      {
+      <div class="row">
+        <div class="col-md-2 col-lg-1 col-sm-12">
+          <span style="font-size:large">@ITS.Resources.ResourcesFiles.MapLabel.Attribute:</span>
+        </div>
+        <div class="col-md-3 col-lg-3 col-sm-12 form-group">
+          @Html.DropDownList("attr", (IEnumerable<SelectListItem>)ViewBag.AttributesName, new { @class = "form-control DropDown" })
+        </div>
+        <div class="col-md-2 col-lg-1 col-sm-12 NormalSearch">
+          <span style="font-size:large">@ITS.Resources.ResourcesFiles.MapLabel.Value:</span>
+        </div>
+        <div class="col-md-3 col-lg-4 col-sm-12 form-group NormalSearch">
+          <input type="text" name="value" value="@Session["SearchValue"]" class="form-control" />
+        </div>
+
+        <div class="col-md-2 col-lg-1 col-sm-12 DateSearch hidden">
+          <span style="font-size:large">@ITS.Resources.ResourcesFiles.MapLabel.From:</span>
+        </div>
+
+        <div class="col-md-3 col-lg-2 col-sm-12 form-group DateSearch hidden">
+          <input type="text" name="FromDate" value="@Session["FromDate"]" class="form-control datepicker" />
+        </div>
+
+        <div class="col-md-2 col-lg-1 col-sm-12 DateSearch hidden">
+          <span style="font-size:large">@ITS.Resources.ResourcesFiles.MapLabel.To:</span>
+        </div>
+
+        <div class="col-md-3 col-lg-2 col-sm-12 form-group DateSearch hidden">
+          <input type="text" name="ToDate" value="@Session["ToDate"]" class="form-control datepicker" />
+        </div>
+
+        <div class="col-md-2 col-lg-2 col-sm-12 form-group">
+          <input type="submit" value="@ITS.Resources.ResourcesFiles.MapLabel.Search" class="btn btn-danger" />
+        </div>
+      </div>
+      }
+    </div>
+    <div class="col-md-1 col-lg-2 col-sm-12 col-xs-12 form-group @ITS.Resources.ResourcesFiles.MapCssClass.OriantationInverse">
+      <a href="@Url.Action("Add","Indicator")" class="btn btn-success" style="text-decoration:none">@ITS.Resources.ResourcesFiles.MapLabel.Create</a>
+    </div>
+  </div>
+</div>
+<br />
+<div style="color:gray;" class="row">
+  <div class="col-md-12 col-lg-12 col-sm-12">
+    @Html.Grid(Model).Columns(Columns =>{
+  Columns.Add(c => c.ID).Titled(ITS.Resources.ResourcesFiles.MapLabel.ID).Filterable(true).Css("textCenter").SetWidth(100);
+  Columns.Add(c => c.Name_A).SetWidth(300).Encoded(false).Sanitized(false).RenderValueAs(c => new HtmlString("<a href='" + Url.Action("ShowFile", "Indicator" , new { id = c.ID }) + "'" + " target='_blank'>" + Language.MapValue(c.Name_E, c.Name_A) + "</a>")).Titled(ITS.Resources.ResourcesFiles.MapLabel.IndicatorName).Filterable(true).Css(ITS.Resources.ResourcesFiles.MapLabel.textposition);
+  Columns.Add(c => c.Publisher.Name_A).SetWidth(300).RenderValueAs(c => Language.MapValue(c.Publisher.Name_E, c.Publisher.Name_A)).Titled(ITS.Resources.ResourcesFiles.MapLabel.Publisher).Filterable(true).Css("textCenter");
+  Columns.Add(c => c.Periodicity.Name_A).SetWidth(150).RenderValueAs(c => Language.MapValue(c.Periodicity.Name_E, c.Periodicity.Name_A)).Titled(ITS.Resources.ResourcesFiles.MapLabel.Periodicity).Filterable(true).Css("textCenter"); ;
+  Columns.Add(c => c.Active).Encoded(false).Sanitized(false).SetWidth(150).RenderValueAs(item => new HtmlString("<a style='cursor: pointer;' data-Controller='Indicator' onclick='ActiveObject(this)' data-id='" + item.ID + "'" + "><i class='fa fa-circle' style='color:" + Functions.ActivateColor[item.Active] + "; font-size:20px; margin-right:5px;'></i></a>" +
+    "<a href='" + Url.Action("XMLOperation", "Indicator", new { id = item.ID }) + "'" + "><i class='fa fa-file-excel-o' style='color:gray; font-size:20px;margin-right:5px;'></i></a> " +
+    "<a href='" + Url.Action("Edit", "Indicator", new { id = item.ID }) + "'" + "><i class='fa fa-edit' style='color:gray; font-size:20px;margin-right:5px;'></i></a> " +
+    "<a style='cursor: pointer;' data-id='" + item.ID + "'" + "data-Controller='Indicator' data-Action1='CheckDeletePermission' data-Action2='Delete' data-Name='" + Language.MapValue(item.Name_E, item.Name_A) + "' data-Msg1='" + ITS.Resources.ResourcesFiles.MapLabel.DeleteConfirm + "' data-Msg2='" + ITS.Resources.ResourcesFiles.MapLabel.DeletedSuccessfully + "'" + "onclick='DeleteObject(this)'" + "" + "><i class='fa fa-trash' style='color:red; font-size:20px;margin-right:5px;'></i></a>"+
+     "<a href='" + Url.Action("Preview", "Indicator", new { id = item.ID }) + "'" + "><i class='fa fa-eye' style='color:gray; font-size:20px; margin-right:5px;'></i></a>"
+   )).Titled(ITS.Resources.ResourcesFiles.MapLabel.Function).Css("textCenter");
+}).WithPaging((int)Session["Paging"]).Sortable(true).Filterable(true)
+
+  </div>
+</div>
+<br />
+<div class="row desc">
+  <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+    <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12 ">
+      <i class="fa fa-circle" style="color:green;font-size:20px;"> </i><span> @ITS.Resources.ResourcesFiles.MapLabel.Active</span>
+      <i class="fa fa-circle" style="color:red;font-size:20px;"> </i><span> @ITS.Resources.ResourcesFiles.MapLabel.InActive</span>
+      <i class='fa fa-edit' style='color:gray;font-size:20px;'> </i><span> @ITS.Resources.ResourcesFiles.MapLabel.Edit</span>
+      <i class='fa fa-trash' style='color:red;font-size:20px;'> </i><span> @ITS.Resources.ResourcesFiles.MapLabel.Delete</span>
+      <i class="fa fa-eye" style="color:gray;font-size:20px;"></i><span> @ITS.Resources.ResourcesFiles.MapLabel.Preview</span>
+    </div>
+    <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12 @ITS.Resources.ResourcesFiles.MapCssClass.OriantationInverse">
+      <a href="@Url.Action("Add","Indicator")" class="btn btn-success" style="text-decoration:none">@ITS.Resources.ResourcesFiles.MapLabel.Create</a>
+    </div>
+  </div>
+</div>
+
+<div class="textCenter paging">
+  @using (Html.BeginForm("Browse", "Indicator", FormMethod.Post))
+  {
+    <span style="padding-left:3%; padding-right:3%">[@Model.Count() @ITS.Resources.ResourcesFiles.MapLabel.Records]</span>
+    <span>@ITS.Resources.ResourcesFiles.MapLabel.Show</span>
+    @Html.DropDownList("NumOfPages", (IEnumerable<SelectListItem>)ViewBag.NumberOfPages, new { @class = "", @onchange = "this.form.submit();" })
+    <span>@ITS.Resources.ResourcesFiles.MapLabel.Records</span>
+  }
+</div>
+
+@section Scripts
+{
+  <script>
+    $(document).ready(function () {
+      var item = $(".DropDown").val();
+      console.log(item);
+      if (item == "StartDate" || item == "EndDate") {
+        $(".NormalSearch").addClass("hidden");
+        $(".DateSearch").removeClass("hidden");
+      }
+      else {
+        $(".NormalSearch").removeClass("hidden");
+        $(".DateSearch").addClass("hidden");
+      }
+    });
+
+    $(".DropDown").change(function () {
+      var item = $(this).val();
+      if (item == "StartDate" || item == "EndDate") {
+        $(".NormalSearch").addClass("hidden");
+        $(".DateSearch").removeClass("hidden");
+      }
+      else {
+        $(".NormalSearch").removeClass("hidden");
+        $(".DateSearch").addClass("hidden");
+      }
+
+    });
+
+  </script>
+
+}
+

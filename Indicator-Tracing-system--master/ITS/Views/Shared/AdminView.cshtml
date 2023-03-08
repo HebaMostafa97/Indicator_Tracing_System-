@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ISDCore.MenuItem>
+@{ 
+  var Show = "";
+}
+<ul class="menu">
+  @if (Model.ElementAt(1).Selected != "" || Model.ElementAt(2).Selected != "")
+  {
+    Show = "show";
+  }
+  <li><a href="@Url.Action("Control","Home")" class="LNK @Model.ElementAt(0).Selected"><i class="fa fa-home"></i> @ITS.Resources.ResourcesFiles.MapLabel.Home</a></li>
+  <li>
+    <a href="#securitysubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+      <i class="fa fa-lock"></i>
+      @ITS.Resources.ResourcesFiles.MapLabel.Security
+    </a>
+    <ul id="securitysubmenu" class="collapse list-unstyled @Show">
+      <li style="padding-left:20px;padding-right:20px; width:220px;"><a href="@Url.Action("Browse","User", new {times = 1})" class="LNK @Model.ElementAt(1).Selected"><i class="fa fa-user"></i> @ITS.Resources.ResourcesFiles.MapLabel.Users</a></li>
+      <li style="padding-left:20px;padding-right:20px; width:220px;"><a href="@Url.Action("Browse","Group", new { times = 1})" class="LNK @Model.ElementAt(2).Selected"><i class="fa fa-users"></i> @ITS.Resources.ResourcesFiles.MapLabel.Group</a></li>
+    </ul>
+  </li>
+  <li><a href="@Url.Action("Browse","Indicator",new { times = 1 })" class="LNK @Model.ElementAt(3).Selected"><i class="fa fa-industry"></i> @ITS.Resources.ResourcesFiles.MapLabel.Indicator</a></li>
+  <li><a href="@Url.Action("Browse","Publisher",new { times = 1 })" class="LNK @Model.ElementAt(4).Selected"><i class="fa fa-newspaper-o"></i> @ITS.Resources.ResourcesFiles.MapLabel.Publisher</a></li>
+  <li><a href="@Url.Action("Browse","IndicatorAttachment",new { times = 1 })" class="LNK @Model.ElementAt(5).Selected"><i class="fa fa-file"></i> @ITS.Resources.ResourcesFiles.MapLabel.Attachment</a></li>
+  <li><a href="@Url.Action("LogOut", "LogIn")"> <i class="fa fa-sign-out" style="color:red;"></i> @ITS.Resources.ResourcesFiles.MapLabel.SignOut</a></li>
+</ul>

@@ -1,0 +1,272 @@
+﻿@model ITS.Models.Indicator
+ @using System.Globalization;
+@using System.Threading;
+@using ISDCore
+@{
+  if (Model.ID <= 0)
+  {
+    ViewBag.title = "Add";
+  }
+  else
+  {
+    ViewBag.title = "Edit";
+  }
+  Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@if (Model.ID <= 0)
+{
+  <h2>@ITS.Resources.ResourcesFiles.MapLabel.Create  @ITS.Resources.ResourcesFiles.MapLabel.Indicator</h2>
+}
+else
+{
+  <h2>@ITS.Resources.ResourcesFiles.MapLabel.Edit  @ITS.Resources.ResourcesFiles.MapLabel.Indicator: @ISDCore.Language.MapValue(Model.Name_E, Model.Name_A)</h2>
+}
+@using (Html.BeginForm("Form", "Indicator", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+  <div style="padding-top:3%;">
+    @Html.HiddenFor(model => model.ID)
+
+    <div class="row">
+      <div class="col-md-12 col-lg-5 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-4">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.ArabicName<span class="Required" style="color:red; margin-left:5%;">*</span></label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-8">
+          @Html.EditorFor(model => model.Name_A, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.Name_A, "", new { @class = "text-danger" })
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-5 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-4 ">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.EnglishName<span class="Required" style="color:red; margin-left:5%;">*</span></label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-8">
+          @Html.EditorFor(model => model.Name_E, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.Name_E, "", new { @class = "text-danger" })
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-12 col-lg-5 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-4">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.ReportName_A<span class="required" style="color:red; margin-left:5%;">*</span></label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-8">
+          @Html.EditorFor(model => model.ReportName_A, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.ReportName_A, "", new { @class = "text-danger" })
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-5 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-4">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.Periodicity<span class="required" style="color:red; margin-left:5%;">*</span></label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-8">
+          @Html.DropDownList("PeriodicityID", null, htmlAttributes: new { @class = "form-control" })
+          @Html.ValidationMessageFor(model => model.PeriodicityID, "", new { @class = "text-danger" })
+        </div>
+      </div>
+
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-12 col-lg-5 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-4">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.StartMonth<span class="required" style="color:red; margin-left:5%;">*</span></label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-8">
+          <div class="input-group date" data-provide="datepicker">
+            @{
+              Thread.CurrentThread.CurrentCulture = new CultureInfo("en-UK");
+            }
+            <input type="text" value="@Model.StartMonth.Date.ToString("d")" name="StartMonth" class="form-control datepicker">
+            <div class="input-group-addon">
+              <span class="glyphicon glyphicon-th"></span>
+            </div>
+          </div>
+          @Html.ValidationMessageFor(model => model.StartMonth, "", new { @class = "text-danger" })
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-5 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-4">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.EndMonth<span class="required" style="color:red; margin-left:5%;">*</span></label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-8 ">
+          <div class="input-group date" data-provide="datepicker">
+            @{
+              Thread.CurrentThread.CurrentCulture = new CultureInfo("en-UK");
+            }
+            <input type="text" value="@Model.EndMonth.Date.ToString("d")" name="EndMonth" class="form-control datepicker">
+            <div class="input-group-addon">
+              <span class="glyphicon glyphicon-th"></span>
+            </div>
+          </div>
+          @Html.ValidationMessageFor(model => model.EndMonth, "", new { @class = "text-danger" })
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-12 col-lg-5 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-4">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.Abbreviation<span class="required" style="color:red; margin-left:5%;">*</span></label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-8">
+          @Html.EditorFor(model => model.Abbreviation, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.Abbreviation, "", new { @class = "text-danger" })
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-5 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-4 ">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.Publisher<span class="required" style="color:red; margin-left:5%;">*</span></label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-8 ">
+          @Html.DropDownList("PublisherID", null, htmlAttributes: new { @class = "form-control" })
+          @Html.ValidationMessageFor(model => model.PublisherID, "", new { @class = "text-danger" })
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-12 col-lg-5 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-4">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.WebsiteUrl<span class="required" style="color:red; margin-left:5%;">*</span></label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-8">
+          @Html.EditorFor(model => model.WebsiteUrl, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.WebsiteUrl, "", new { @class = "text-danger" })
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-5 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-4">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.IndexUrl<span class="required" style="color:red; margin-left:5%;">*</span></label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-8">
+          @Html.EditorFor(model => model.IndexUrl, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.IndexUrl, "", new { @class = "text-danger" })
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-12 col-lg-5 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-4">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.Description_A</label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-8">
+          @Html.TextAreaFor(model => model.Description_A, new { @class = "form-control", @cols = 3, @rows = 3 })
+          @Html.ValidationMessageFor(model => model.Description_A, "", new { @class = "text-danger" })
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-5 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-4">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.Description_E</label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-8">
+          @Html.TextAreaFor(model => model.Description_E, new { @class = "form-control", @cols = 3, @rows = 3 })
+          @Html.ValidationMessageFor(model => model.Description_E, "", new { @class = "text-danger" })
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="row">
+      <div class="col-md-12 col-lg-5 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-4">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.Notes_A</label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-8">
+          @Html.TextAreaFor(model => model.Notes_A, new { @class = "form-control", @cols = 3, @rows = 3 })
+          @Html.ValidationMessageFor(model => model.Notes_A, "", new { @class = "text-danger" })
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-5 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-4">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.Notes_E</label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-8">
+          @Html.TextAreaFor(model => model.Notes_E, new { @class = "form-control", @cols = 3, @rows = 3 })
+          @Html.ValidationMessageFor(model => model.Notes_E, "", new { @class = "text-danger" })
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-12 col-lg-5 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-12 col-sm-12 col-md-3 col-lg-4">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.ReportName_E</label>
+        </div>
+        <div class="col-xsm-12 col-sm-12 col-md-7 col-lg-8">
+          @Html.EditorFor(model => model.ReportName_E, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.ReportName_E, "", new { @class = "text-danger" })
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-lg-5 col-sm-12 col-xs-12 form-group">
+        <div class="col-xsm-4 col-sm-4 col-md-3 col-lg-4">
+          <label>@ITS.Resources.ResourcesFiles.MapLabel.SortIndex</label>
+        </div>
+
+        <div class="col-xsm-3 col-sm-3 col-md-4 col-lg-3">
+          @Html.EditorFor(model => model.SortIndex, new { htmlAttributes = new { @class = "form-control" } })
+          @Html.ValidationMessageFor(model => model.SortIndex, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-xsm-1 col-sm-1 col-md-2 col-lg-2">
+          @if (Model != null && Model.Focus == 1)
+          {
+            <input type="checkbox" name="focus" checked="checked" />
+          }
+          else
+          {
+            <input type="checkbox" name="focus" />
+          }
+          <span style="font-weight:bold">@ITS.Resources.ResourcesFiles.MapLabel.Focus</span>
+        </div>
+        <div class="col-xsm-1 col-sm-3 col-md-2 col-lg-2">
+
+          @if (Model != null && Model.Active == 1)
+          {
+            <input type="checkbox" name="active" checked="checked" />
+          }
+          else
+          {
+            <input type="checkbox" name="active" />
+          }
+          <span style="font-weight:bold">@ITS.Resources.ResourcesFiles.MapLabel.Active</span>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div>
+      <div class="row form-group">
+        <div class="col-xsm-6 col-sm-6 col-md-9 col-lg-9 @ITS.Resources.ResourcesFiles.MapCssClass.OriantationInverse">
+          <a href="@Url.Action("Browse","Indicator" , new { times = 1})" class="btn btn-danger">@ITS.Resources.ResourcesFiles.MapLabel.Cancel</a>
+          @if (Model.ID <= 0)
+          {
+            <a href="@Url.Action("Add","Indicator")" class="btn btn-warning">@ITS.Resources.ResourcesFiles.MapLabel.Reset</a>
+          }
+          else
+          {
+            <a href="@Url.Action("ResetEdit","Indicator",new { ID=Model.ID})" class="btn btn-warning">@ITS.Resources.ResourcesFiles.MapLabel.Reset</a>
+          }
+          @if (Model.ID <= 0)
+          {
+            <input type="submit" value="@ITS.Resources.ResourcesFiles.MapLabel.SaveAdd" name="Form" class="btn btn-success" />
+          }
+          else
+          {
+            <input type="submit" value="@ITS.Resources.ResourcesFiles.MapLabel.SaveEdit" name="Form" class="btn btn-success" />
+          }
+          <input type="submit" value="@ITS.Resources.ResourcesFiles.MapLabel.Save" name="Form" class="btn btn-success" />
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+}

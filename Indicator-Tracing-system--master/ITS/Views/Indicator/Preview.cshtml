@@ -1,0 +1,267 @@
+﻿@model ITS.Models.Indicator
+@using ITS.Models
+@using ISDCore
+@{
+    ViewBag.Title = "Preview";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<div class="row">
+    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 @ITS.Resources.ResourcesFiles.MapCssClass.OriantationInverse">
+        <a href="@Url.Action("Browse","Indicator")" class="btn btn-danger">@ITS.Resources.ResourcesFiles.MapLabel.Cancel</a>
+    </div>
+</div>
+
+<h2 style="color:white; background-color:darkcyan; padding-top:10px; padding-bottom:10px; padding-right:10px;">@ViewBag.PreviewTitle @ISDCore.Language.MapValue(Model.Name_E, Model.Name_A)</h2>
+<style>
+    .title {
+        font-size: large;
+        color: gray;
+        font-weight: bold;
+    }
+</style>
+
+<div>
+    <table style="width:100%;">
+        <tr>
+            <div class="row">
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="title">@ITS.Resources.ResourcesFiles.MapLabel.ArabicName</span>
+                    </div>
+                </td>
+
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="value">@Model.Name_A</span>
+                    </div>
+                </td>
+
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="title">@ITS.Resources.ResourcesFiles.MapLabel.EnglishName</span>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="value">@Model.Name_E</span>
+                    </div>
+                </td>
+            </div>
+        </tr>
+        
+
+
+
+
+        <tr>
+           <div class="row">
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="title">@ITS.Resources.ResourcesFiles.MapLabel.ReportName_A</span>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="value">@Model.ReportName_A</span>
+                    </div>
+                </td>
+
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="title">@ITS.Resources.ResourcesFiles.MapLabel.ReportName_E</span>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="value">@Model.ReportName_E</span>
+                    </div>
+                </td>
+           </div>
+        </tr>
+       
+
+
+
+        <tr>
+           <div class="row">
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 @ITS.Resources.ResourcesFiles.MapCssClass.Oriantation">
+                        <span class="title">@ITS.Resources.ResourcesFiles.MapLabel.Description_A</span>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 @ITS.Resources.ResourcesFiles.MapCssClass.Oriantation">
+                        <span class="value">@Model.Description_A</span>
+                    </div>
+                </td>
+
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 @ITS.Resources.ResourcesFiles.MapCssClass.Oriantation">
+                        <span class="title">@ITS.Resources.ResourcesFiles.MapLabel.Description_E</span>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 @ITS.Resources.ResourcesFiles.MapCssClass.Oriantation">
+                        <span class="value">@Model.Description_E</span>
+                    </div>
+
+                </td>
+           </div>
+        </tr>
+       
+
+
+        <tr>
+          <div class="row">
+            <td>
+                <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                    <span class="title">@ITS.Resources.ResourcesFiles.MapLabel.Notes_A</span>
+                </div>
+            </td>
+
+            <td>
+                <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                    <span class="value">@Model.Notes_A</span>
+                </div>
+            </td>
+
+
+
+            <td>
+                <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                    <span class="title">@ITS.Resources.ResourcesFiles.MapLabel.Notes_E</span>
+                </div>
+            </td>
+
+            <td>
+                <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                    <span class="value">@Model.Notes_E</span>
+                </div>
+            </td>
+          </div>
+        </tr>
+      
+
+
+        <tr>
+            <div class="row">
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="title">@ITS.Resources.ResourcesFiles.MapLabel.WebsiteUrl</span>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="value">@Model.WebsiteUrl</span>
+                    </div>
+                </td>
+
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="title">@ITS.Resources.ResourcesFiles.MapLabel.IndexUrl</span>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="value">@Model.IndexUrl</span>
+                    </div>
+                </td>
+            </div>
+        </tr>
+        
+
+
+        <tr>
+            <div class="row">
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="title">@ITS.Resources.ResourcesFiles.MapLabel.StartMonth</span>
+                    </div>
+                </td>
+            
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="value">@Model.StartMonth</span>
+                    </div>
+                </td>
+
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="title">@ITS.Resources.ResourcesFiles.MapLabel.EndMonth</span>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="value">@Model.EndMonth</span>
+                    </div>
+                </td>
+            </div>
+        </tr>
+        
+
+        <tr>
+            <div class="row">
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="title">@ITS.Resources.ResourcesFiles.MapLabel.Publisher</span>
+                    </div>
+                </td>
+
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="value">@ISDCore.Language.MapValue(Model.Publisher.Name_E, Model.Publisher.Name_A)</span>
+                    </div>
+                </td>
+
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="title">@ITS.Resources.ResourcesFiles.MapLabel.Periodicity:</span>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="value">@ISDCore.Language.MapValue(Model.Periodicity.Name_E, Model.Periodicity.Name_A)</span>
+                    </div>
+                </td>
+             </div>
+        </tr>
+        
+
+
+        <tr>
+            <div class="row">
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="title">@ITS.Resources.ResourcesFiles.MapLabel.Abbreviation</span>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-xsm-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <span class="value">@Model.Abbreviation</span>
+                    </div>
+                </td>
+            </div>
+        </tr>
+
+
+    </table>
+</div>

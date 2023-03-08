@@ -1,0 +1,108 @@
+﻿@model IEnumerable<ITS.Models.IndicatorAttachment>
+@using GridMvc.Html
+@using ISDCore
+@{
+    ViewBag.Title = ITS.Resources.ResourcesFiles.MapLabel.List + " " + ITS.Resources.ResourcesFiles.MapLabel.IndicatorAttachment;
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2 class="header">@ITS.Resources.ResourcesFiles.MapLabel.List @ITS.Resources.ResourcesFiles.MapLabel.IndicatorAttachment</h2>
+
+<div class="filter" style="border:2px solid #EDEDED; padding:1% 1%;">
+    @using (Html.BeginForm("Browse", "IndicatorAttachment", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-md-2 col-lg-1 col-sm-12">
+                <span style="font-size:large">@ITS.Resources.ResourcesFiles.MapLabel.Attribute:</span>
+            </div>
+            <div class="col-md-3 col-lg-3 col-sm-12 form-group">
+                @Html.DropDownList("attr", (IEnumerable<SelectListItem>)ViewBag.AttributesName, new { @class = "form-control DropDown" })
+            </div>
+            <div class="col-md-2 col-lg-1 col-sm-12 NormalSearch">
+                <span style="font-size:large">@ITS.Resources.ResourcesFiles.MapLabel.Value:</span>
+            </div>
+            <div class="col-md-3 col-lg-4 col-sm-12 form-group NormalSearch">
+                <input type="text" name="value" value="@Session["SearchValue"]" class="form-control" />
+            </div>
+
+            <div class="col-md-2 col-lg-1 col-sm-12 DateSearch hidden">
+                <span style="font-size:large">@ITS.Resources.ResourcesFiles.MapLabel.From:</span>
+            </div>
+
+            <div class="col-md-3 col-lg-2 col-sm-12 form-group DateSearch hidden">
+                <input type="text" name="FromDate" value="@Session["FromDate"]" class="form-control datepicker" />
+            </div>
+
+            <div class="col-md-2 col-lg-1 col-sm-12 DateSearch hidden">
+                <span style="font-size:large">@ITS.Resources.ResourcesFiles.MapLabel.To:</span>
+            </div>
+
+            <div class="col-md-3 col-lg-2 col-sm-12 form-group DateSearch hidden">
+                <input type="text" name="ToDate" value="@Session["ToDate"]" class="form-control datepicker" />
+            </div>
+
+            <div class="col-md-2 col-lg-2 col-sm-12 form-group">
+                <input type="submit" value="@ITS.Resources.ResourcesFiles.MapLabel.Search" class="btn btn-danger" />
+            </div>
+        </div>
+    }
+
+</div>
+
+<div style="color:gray; padding-top:3%" class="row ">
+    <div class="col-md-12 col-lg-12 col-sm-12">
+        @Html.Grid(Model).Columns(Columns =>{
+       Columns.Add(c => c.AttachmentTitle).Titled(ITS.Resources.ResourcesFiles.MapLabel.AttachmentTitle).SetWidth(250).Css("textCenter");
+       Columns.Add(c => c.Indicator.Name_A).RenderValueAs(c => Language.MapValue(c.Indicator.Name_E, c.Indicator.Name_A)).Titled(ITS.Resources.ResourcesFiles.MapLabel.Indicator).Filterable(true).Css("textCenter").SetWidth(120);
+       Columns.Add(c => c.ReleaseDate).Titled(ITS.Resources.ResourcesFiles.MapLabel.ReleaseDate).Filterable(true).Css("textCenter").SetWidth(160);
+       Columns.Add().Encoded(false).Sanitized(false).RenderValueAs(item => new HtmlString("<a style='cursor: pointer;' onclick='Downloaded(this)' model='IndicatorAttachment' msg1='" + ITS.Resources.ResourcesFiles.MapLabel.DownloadSuccessfully + "'" + "msg2='" + ITS.Resources.ResourcesFiles.MapLabel.DownloadFailed + "'" + "' data-id='" + item.ID + "'" + "><i class='fa fa-download' style='color:gray; font-size:20px;'></i></a>"))
+       .Titled(ITS.Resources.ResourcesFiles.MapLabel.Function).Css("textCenter").SetWidth(60);
+   }).WithPaging((int)Session["Paging"]).Sortable(true).Filterable(true)
+    </div>
+</div>
+<br /><br /><br /><br /><br /><br />
+<div class="textCenter paging">
+    @using (Html.BeginForm("Browse", "IndicatorAttachment", FormMethod.Post))
+    {
+        <span style="padding-left:3%; padding-right:3%">[@Model.Count() @ITS.Resources.ResourcesFiles.MapLabel.Records]</span>
+        <span>@ITS.Resources.ResourcesFiles.MapLabel.Show</span>
+        @Html.DropDownList("NumOfPages", (IEnumerable<SelectListItem>)ViewBag.NumberOfPages, new { @class = "", @onchange = "this.form.submit();" })
+        <span>@ITS.Resources.ResourcesFiles.MapLabel.Records</span>
+    }
+</div>
+<br />
+
+
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            var item = $(".DropDown").val();
+            console.log(item);
+            if (item == "CreateDate" || item == "ReleaseDate" || item == "UploadDate") {
+                $(".NormalSearch").addClass("hidden");
+                $(".DateSearch").removeClass("hidden");
+            }
+            else {
+                $(".NormalSearch").removeClass("hidden");
+                $(".DateSearch").addClass("hidden");
+            }
+        });
+
+        $(".DropDown").change(function () {
+            var item = $(this).val();
+            if (item == "CreateDate" || item == "ReleaseDate" || item == "UploadDate") {
+                $(".NormalSearch").addClass("hidden");
+                $(".DateSearch").removeClass("hidden");
+            }
+            else {
+                $(".NormalSearch").removeClass("hidden");
+                $(".DateSearch").addClass("hidden");
+            }
+
+        });
+
+    </script>
+
+}

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+@using ISDCore
+<html>
+<head>
+
+  <meta name="viewport" content="width=device-width" />
+  <link href="@Url.Content("~/Resources/bootstrap/bootstrap.css")" rel="stylesheet" />
+  <link href="@Url.Content("~/Resources/custom/Gridmvc.css")" rel="stylesheet" />
+  <link href="@Url.Content("~/Resources/custom/Custom.css")" rel="stylesheet" />
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link href="~/Resources/custom/font-awesome.min.css" rel="stylesheet" />
+  <title>@ViewBag.Title</title>
+</head>
+<body class="@ITS.Resources.ResourcesFiles.MapLabel.direction">
+    @* mesh zaher 3ashan f class hidden 
+  <span class="hidden ActiveContentLanguage">@ITS.Resources.ResourcesFiles.MapLabel.ContentActive</span>
+  <span class="hidden cancelButton">@ITS.Resources.ResourcesFiles.MapLabel.Cancel</span>
+  <span class="hidden OkButton">@ITS.Resources.ResourcesFiles.MapLabel.OK</span>
+     *@
+  <div style="background-color:#343a40; height:50px; position:fixed; width:100%; z-index:1000">
+    <h2 style="color:rgba(255,255,255,.5);margin-top:0; padding:5px;">@ITS.Resources.ResourcesFiles.MapLabel.IndicatorTracingSystem</h2>
+  </div>
+  <div id="sidebar" class="@ITS.Resources.ResourcesFiles.MapLabel.ContentActive" style="float:right; background-color:#343a40">
+    <div class="UserProfile">
+      <img src="~/Resources/Images/mainUser.png" alt="User" />
+      <span style="color:gray;"><span style="color:white">&nbsp;@LoginToken.LoginUser.Name</span></span>
+    </div>
+    @Html.Action("AdminView");
+  </div>
+  <div class="Content @ITS.Resources.ResourcesFiles.MapLabel.ContentActive">
+    @RenderBody()
+  </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="~/Scripts/gridmvc.min.js"></script>
+  <script src="~/Scripts/jquery.validate.min.js"></script>
+  <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="~/Scripts/Custom.js"></script>
+  @*@Scripts.Render("~/bundles/jquery")*@
+  @Scripts.Render("~/bundles/bootstrap")
+  @RenderSection("scripts", required: false)
+</body>
+</html>

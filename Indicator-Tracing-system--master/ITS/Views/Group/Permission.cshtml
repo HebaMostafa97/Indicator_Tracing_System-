@@ -1,0 +1,147 @@
+﻿@model IEnumerable<ITS.Models.GroupPermission>
+@using ISDCore
+@{
+  ViewBag.Title = "Permission";
+  Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>@ITS.Resources.ResourcesFiles.MapLabel.Permission @(((ITS.Models.Group)Session["CurrentGroup"]).Name)</h2>
+
+@using (Html.BeginForm("Permission", "Group", FormMethod.Post))
+{
+  <div style="width:30%;">
+    <div>
+      @Html.DropDownList("Objects", (IEnumerable<SelectListItem>)ViewBag.objectsName, Session["SelectedValue"].ToString(), new { @class = "form-control target", @onchange = "this.form.submit();" })
+    </div>
+  </div>
+}
+<br />
+
+@using (Html.BeginForm("Save", "Group", FormMethod.Post))
+{
+<div style="width:60%;">
+  <table class="Func table table-bordered">
+    <tr>
+      <th style=" text-align:center">@ITS.Resources.ResourcesFiles.MapLabel.Function</th>
+      <th style="cursor:pointer; text-align:center" class="AllInherit"><a>@ITS.Resources.ResourcesFiles.MapLabel.Inhrit</a></th>
+      <th style="cursor:pointer; text-align:center" class="AllAllow"><a>@ITS.Resources.ResourcesFiles.MapLabel.Allow</a></th>
+      <th style="cursor:pointer; text-align:center" class="AllDeny"><a>@ITS.Resources.ResourcesFiles.MapLabel.Deny</a></th>
+      <th style="cursor:pointer; text-align:center" class="AllSelect"><a>@ITS.Resources.ResourcesFiles.MapLabel.Restricted</a></th>
+    </tr>
+    @if ((TempData["FunctionsList"] as List<ListItemObject>) != null)
+    {
+      foreach (var item in TempData["FunctionsList"] as List<ListItemObject>)
+      {
+        <tr style="text-align:center;">
+          <td>@ISDCore.Resources.MapLabel[item.value]</td>
+          @{
+            ITS.Models.GroupPermission groupPermission = Model.Where(obj => obj.FunctionName == item.value).FirstOrDefault();
+            if (groupPermission != null)
+            {
+              if (groupPermission.Permission == 1)
+              {
+                <td><input type="radio" name="@groupPermission.ID-Inherit" data-function="@item.value" class="Inhrit @item.value-Inhrit" /></td>
+                <td><input type="radio" name="@groupPermission.ID-Allow" checked="checked" data-function="@item.value" class="Allow @item.value-Allow" /></td>
+                <td><input type="radio" name="@groupPermission.ID-Deny" data-function="@item.value" class="Deny @item.value-Deny" /></td>
+              }
+              else if (groupPermission.Permission == 0)
+              {
+                <td><input type="radio" name="@groupPermission.ID-Inherit" checked="checked" data-function="@item.value" class="Inhrit @item.value-Inhrit" /></td>
+                <td><input type="radio" name="@groupPermission.ID-Allow" data-function="@item.value" class="Allow @item.value-Allow" /></td>
+                <td><input type="radio" name="@groupPermission.ID-Deny" data-function="@item.value" class="Deny @item.value-Deny" /></td>
+
+              }
+              else if (groupPermission.Permission == 2)
+              {
+                <td><input type="radio" name="@groupPermission.ID-Inherit" data-function="@item.value" class="Inhrit @item.value-Inhrit" /></td>
+                <td><input type="radio" name="@groupPermission.ID-Allow" data-function="@item.value" class="Allow @item.value-Allow" /></td>
+                <td><input type="radio" name="@groupPermission.ID-Deny" checked="checked" data-function="@item.value" class="Deny @item.value-Deny" /></td>
+
+              }
+              if (groupPermission.Restricted == 1)
+              {
+                <td><input type="checkbox" checked="checked" name="@groupPermission.ID-Restricted" class="Restricted" data-function="@item.value" /></td>
+              }
+              else
+              {
+                <td><input type="checkbox" name="@groupPermission.ID-Restricted" class="Restricted" data-function="@item.value" /></td>
+              }
+            }
+            else
+            {
+              <td><input type="radio" name="0-Inherit-@item.value" checked="checked" data-function="@item.value" class="Inhrit @item.value-Inhrit" /></td>
+              <td><input type="radio" name="0-Allow-@item.value" data-function="@item.value" class="Allow @item.value-Allow" /></td>
+              <td><input type="radio" name="0-Deny-@item.value" data-function="@item.value" class="Deny @item.value-Deny" /></td>
+              <td><input type="checkbox" name="0-Restricted-@item.value" class="Restricted" data-function="@item.value" /></td>
+            }
+
+          }
+
+        </tr>
+
+      }
+    }
+
+  </table>
+  @if ((TempData["FunctionsList"] as List<ListItemObject>) != null)
+  {
+    <div class="@ITS.Resources.ResourcesFiles.MapCssClass.OriantationInverse">
+      <input type="submit" value="@ITS.Resources.ResourcesFiles.MapLabel.Save" class="btn btn-success" />
+      <a href="@Url.Action("Browse")" class="btn btn-danger">@ITS.Resources.ResourcesFiles.MapLabel.Cancel</a>
+    </div>
+  }
+</div>
+}
+
+@section scripts{
+
+  <script>
+        $(document).ready(function () {
+            $("input").change(function () {
+                var fun = $(this).attr("data-function");
+                if ($(this).hasClass("Allow")) {
+                    var ele = "." + fun + "-Inhrit";
+                    $(ele).prop("checked", false);
+                    var ele = "." + fun + "-Deny";
+                    $(ele).prop("checked", false);
+                }
+                else if ($(this).hasClass("Inhrit")) {
+                    var ele = "." + fun + "-Allow";
+                    $(ele).prop("checked", false);
+
+                    var ele = "." + fun + "-Deny";
+                    $(ele).prop("checked", false);
+                }
+                else if ($(this).hasClass("Deny")) {
+                    var ele = "." + fun + "-Allow";
+                    $(ele).prop("checked", false);
+
+                    var ele = "." + fun + "-Inhrit";
+                    $(ele).prop("checked", false);
+                }
+          });
+          $(".AllInherit").click(function(){
+            $(".Inhrit").prop("checked", true);
+            $(".Allow").prop("checked", false);
+            $(".Deny").prop("checked", false);
+          });
+          $(".AllAllow").click(function () {
+            $(".Inhrit").prop("checked", false);
+            $(".Allow").prop("checked", true);
+            $(".Deny").prop("checked", false);
+          });
+          $(".AllDeny").click(function () {
+            $(".Inhrit").prop("checked", false);
+            $(".Allow").prop("checked", false);
+            $(".Deny").prop("checked", true);
+          });
+          $(".AllSelect").click(function () {
+            $(".Restricted").prop("checked", true);
+          });
+
+        });
+  </script>
+
+
+}
+
